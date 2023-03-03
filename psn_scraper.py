@@ -41,6 +41,11 @@ class PSNScraper:
     def get_data(self, offset):
         rtn_data = []
 
+        # Exit if no PSN SHA256.
+        if Config.PSN_SHA_256 is None or Config.PSN_SHA_256 == '':
+            print("Make sure your PSN SHA256 code is in the config file. Exiting program.")
+            exit()
+        
         querystring = {"operationName":"categoryGridRetrieve","variables":"{\"id\":\"" + self.category + "\",\"pageArgs\":{\"size\":1000,\"offset\":" + str(offset) + "},\"sortBy\":{\"name\":\"productName\",\"isAscending\":true},\"filterBy\":[\"targetPlatforms:" + self.platform + "\"],\"facetOptions\":[]}","extensions":"{\"persistedQuery\":{\"version\":1,\"sha256Hash\":\"" + Config.PSN_SHA_256 + "\"}}"}
 
         response = requests.request("GET", self.url, headers=self.headers, params=querystring)
