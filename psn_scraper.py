@@ -50,11 +50,12 @@ class PSNScraper:
         for p in data['data']['categoryGridRetrieve']['products']:
             productName = p['name'].replace('|', '')
             url = 'https://store.playstation.com/en-us/product/' + p['id']
-            discountedPrice = p['price']['discountedPrice']
-            discountText = p['price']['discountText']
-            product  = PSNProduct(productName, url, discountedPrice, discountText)
-            rtn_data.append(product)
-        
+            if p['price'] is not None:
+                discountedPrice = p['price']['discountedPrice']
+                discountText = p['price']['discountText']
+                product  = PSNProduct(productName, url, discountedPrice, discountText)
+                rtn_data.append(product)
+            
         return rtn_data
     
     def get_count(self):
