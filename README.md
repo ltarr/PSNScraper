@@ -25,7 +25,17 @@ I recommend you use a virtual environment (venv, conda) to do this. It helps kee
 
 ### Playstation SHA256
 
-In order to use the internal Playstation Store API, you must acquire a SHA256 hash.
+In order to use the internal Playstation Store API, you must acquire a SHA256 hash. This must be set as the environment variable `PSN_SHA_256`.
+
+The easiest way to get this that I have found is to follow these steps. You only need to do this once, so don't fret.
+
+First, go to any sale you wish on the Playstation Store. Open the DevTools in your browser (easy way to do this is Ctrl+Shift+I in Chrome).
+
+Next, go to the 'Network' tab. In your browser, press the next page button or go to any page on the sale. 
+
+In the Network tab, find the entry that starts with `op?operationName=categoryGridRetrieve`. Look at the payload under the 'Payload Header'. Decode this by pressing 'View Decoded'. In the `extensions` parameter, you will see the code under "sha256Hash".
+
+I will hopefully be posting a video to make this easier.
 
 ### Posting to Reddit
 In order to post to Reddit, you'll need to need to register a developed app.
