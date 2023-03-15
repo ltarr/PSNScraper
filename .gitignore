@@ -1,2 +1,4 @@
 __pycache__/
 praw.ini
+sale_sheets/
+*.csv
