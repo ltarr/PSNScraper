@@ -4,7 +4,7 @@
 
 [`sale_md.py`](sale_md.py) makes Reddit comments.
 
-[`psn_to_csv.py`](psn_to_csv.py) creates a CSV with the sale data. This is useful for uploading to something like Google Sheets.
+[`psn_to_csv.py`](psn_to_csv.py) creates a CSV with the sale data. This is useful for uploading to something like Google Sheets. Use `psn_to_csv.py -h` to see all of the arguments.
 
 [`psn_reddit_gui.py`](psn_reddit_gui.py) is a GUI interface to post comments on a
 certain Reddit thread.

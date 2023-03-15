@@ -1,5 +1,5 @@
 from psn_scraper import PSNScraper
-import sys
+import argparse
 import pandas as pd
 
 def process_csv(products, output_name):
@@ -8,12 +8,20 @@ def process_csv(products, output_name):
     df.to_csv(output_name, index=False)
 
 if __name__ == '__main__':
-    category = sys.argv[1]
-    platform = sys.argv[2]
-    output_name = sys.argv[3]
-    
+    parser = argparse.ArgumentParser(description='''
+    Get PSN sale results into a csv file. 
+    ''')
 
-    psn_scraper = PSNScraper(category, platform)
+    parser.add_argument('category',
+                        help='PSN Sale Category')
+    parser.add_argument('platform',
+                        help="Platform (PS4 or PS5)")
+    parser.add_argument('output_name',
+                        help='Name of output csv file')
+    
+    args = parser.parse_args()
+    
+    psn_scraper = PSNScraper(args.category, args.platform)
     psn_scraper.get_all_data()
 
-    process_csv(psn_scraper.products, output_name)
+    process_csv(psn_scraper.products, args.output_name)
