@@ -7,6 +7,9 @@ def process_csv(products, output_name):
 
     df.to_csv(output_name, index=False)
 
+def upper(s: str):
+    return s.upper()
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='''
     Get PSN sale results into a csv file. 
@@ -15,7 +18,9 @@ if __name__ == '__main__':
     parser.add_argument('category',
                         help='PSN Sale Category')
     parser.add_argument('platform',
-                        help="Platform (PS4 or PS5)")
+                        help="Platform (PS4 or PS5)",
+                        choices=['ps4', 'PS4', 'ps5', 'PS5'],
+                        type=upper)
     parser.add_argument('output_name',
                         help='Name of output csv file')
     
