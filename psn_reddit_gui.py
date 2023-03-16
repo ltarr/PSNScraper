@@ -30,7 +30,7 @@ if __name__ == '__main__':
         if event == 'Ok':
             submission = reddit.submission(url=values['reddit_url'])
 
-            psn_scraper = PSNScraper(values['category'], values['platform'])
+            psn_scraper = PSNScraper(values['category'], values['platform'].upper())
             psn_scraper.get_all_data()
 
             comments = get_comments(psn_scraper.products)
