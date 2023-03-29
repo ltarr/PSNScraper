@@ -52,6 +52,9 @@ class PSNScraper:
 
         data = response.json()
 
+        if data is None:
+            return rtn_data
+        
         for p in data['data']['categoryGridRetrieve']['products']:
             productName = p['name'].replace('|', '')
             url = 'https://store.playstation.com/en-us/product/' + p['id']
